@@ -1,0 +1,41 @@
+{
+  "name": "typescript-on-browser-starter",
+  "version": "0.1.0-SNAPSHOT",
+  "description": "Starter for TypeScript on Web Browser",
+  "scripts": {
+    "test": "jest",
+    "serve": "webpack-dev-server --watch",
+    "build": "webpack",
+    "lint": "eslint src/**/*.ts"
+  },
+  "keywords": [
+    "TypeScript",
+    "Browser"
+  ],
+  "author": "Ryo Ota <nwtgck@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/jest": "^24.0.24",
+    "@typescript-eslint/eslint-plugin": "^2.12.0",
+    "@typescript-eslint/parser": "^2.12.0",
+    "babel-core": "^6.26.3",
+    "babel-loader": "^8.0.6",
+    "babel-preset-es2015": "^6.24.1",
+    "eslint": "^6.7.2",
+    "eslint-config-prettier": "^6.7.0",
+    "eslint-plugin-prettier": "^3.1.2",
+    "html-webpack-plugin": "^3.2.0",
+    "jest": "^24.9.0",
+    "prettier": "^1.19.1",
+    "ts-jest": "^24.2.0",
+    "ts-loader": "^6.2.1",
+    "typescript": "^3.7.3",
+    "webpack": "^4.41.4",
+    "webpack-cli": "^3.3.10",
+    "webpack-dev-server": "^3.10.1"
+  },
+  "dependencies": {
+    "@types/superagent": "^4.1.4",
+    "superagent": "^5.1.3"
+  }
+}
