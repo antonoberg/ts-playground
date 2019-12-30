@@ -1,7 +1,7 @@
 import superagent from 'superagent'
 
 export abstract class BaseTransportClient {
-  abstract async call(method: string, args: any): Promise<any>
+  abstract async call(provider: string, method: string, args: any): Promise<any>
 }
 
 export class RestTransportClient extends BaseTransportClient {
@@ -14,9 +14,14 @@ export class RestTransportClient extends BaseTransportClient {
     this.host = host
   }
 
-  call = async (method: string, args: any): Promise<any> => {
-    const url = `${this.host}/rpc/${method}`
-    const response = await superagent.post(url).send(args)
-    return response.body
+  call = async (provider: string, method: string, args: any): Promise<any> => {
+    const url = `${this.host}/rpc/${provider}/${method}`
+    try {
+      const response = await superagent.post(url).send(args)
+      return response.body
+    } catch (err) {
+      console.log('err', err)
+      throw err
+    }
   }
 }

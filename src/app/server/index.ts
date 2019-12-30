@@ -1,10 +1,18 @@
-import { createMusicResolver } from './resolvers'
-import { AggregatedSongProvider, AggregatedArtistProvider } from './providers'
+import express from 'express'
+import bodyParser from 'body-parser'
+import { createMusicRouter } from './routers'
 
-const aggregatedSongProvider = new AggregatedSongProvider()
-const aggregatedArtistProvider = new AggregatedArtistProvider()
+export const musicRouter = createMusicRouter()
 
-export const musicResolver = createMusicResolver({
-  artist: aggregatedArtistProvider,
-  song: aggregatedSongProvider,
+const app = express()
+app.use(bodyParser.json())
+app.use((req, res, next) => {
+  console.log('called', req.url)
+  next()
+})
+
+app.use(musicRouter)
+
+app.listen(3000, () => {
+  console.log('Im listening')
 })

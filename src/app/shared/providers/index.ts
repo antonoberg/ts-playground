@@ -2,7 +2,7 @@
 import { Artist, AggregatedArtist, AggregatedSong, Song } from '../models'
 
 export class SongProvider {
-  public async getById({ id }: { id: string }, serverArgs: any): Promise<Song> {
+  public async getById({ id }: { id: string }): Promise<Song> {
     throw new Error('implement')
   }
 }
@@ -14,10 +14,7 @@ export class ArtistProvider {
 }
 
 export class AggregatedSongProvider {
-  public async getById(
-    { id }: { id: string },
-    serverArgs: any
-  ): Promise<AggregatedSong> {
+  public async getById({ id }: { id: string }): Promise<AggregatedSong> {
     throw new Error('implement')
   }
 }

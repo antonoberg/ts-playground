@@ -8,19 +8,20 @@ export class ClientProvider {
   constructor(callMethod: BaseTransportClient['call']) {
     this.callMethod = callMethod
   }
-  async call(method: string, args: any): Promise<any> {
-    return this.callMethod(method, args)
+  async call(provider: string, method: string, args: any): Promise<any> {
+    return this.callMethod(provider, method, args)
   }
 }
 
 function createClientProvider<T, K extends ClientProvider>(
+  key: string,
   Klass: new () => T,
   base: K
 ): K & T {
   Object.getOwnPropertyNames(Klass.prototype).forEach((method: any) => {
     if (method !== 'constructor') {
       ;(base as any)[method] = function(arg: string): any {
-        base.call(method, arg)
+        return base.call(key, method, arg)
       }
     }
   })
@@ -41,6 +42,7 @@ export class ApiClient<T extends Providers> {
       return {
         ...obj,
         [key]: createClientProvider(
+          key,
           providers[key],
           new ClientProvider(transport.call)
         ),
