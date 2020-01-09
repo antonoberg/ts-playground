@@ -2,6 +2,13 @@
 
 This is a work in progress playground to explore the possibilities of typescript when used in the whole stack.
 
+# Test it
+
+`yarn && yarn start`
+
+To run the example
+`yarn && yarn example`
+
 # Idea
 
 This is an exploration of how to provide type security between services and frontend. Instead of trying to add types to an existing express rest route setup Im exploring a typescript first principle approach.
