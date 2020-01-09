@@ -16,6 +16,7 @@
     "rootDir": "./",
     "baseUrl": ".",
     "resolveJsonModule": true,
+    "experimentalDecorators": true,
     "paths": {
       "*": ["types/*"]
     }
